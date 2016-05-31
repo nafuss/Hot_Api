@@ -22,6 +22,7 @@ var UserSchema = new mongoose.Schema({
   lastname: {
     type: String
   },
+  // User choose if he allow to appear in the search page
   status: {
     type: String,
     enum: ['Private', 'Public'],
@@ -63,4 +64,5 @@ UserSchema.methods.comparePassword = function(pw, cb) {
   });
 };
 
+// Export module
 module.exports = mongoose.model('User', UserSchema);

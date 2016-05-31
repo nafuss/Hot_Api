@@ -14,6 +14,7 @@ var ChatSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  // Used to store yt link
   link: {
     type: String,
   }
@@ -22,4 +23,5 @@ var ChatSchema = new mongoose.Schema({
   timestamps: true // Saves createdAt and updatedAt as dates. createdAt will be our timestamp.
 });
 
+// Export module
 module.exports = mongoose.model('Chat', ChatSchema);

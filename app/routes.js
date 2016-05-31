@@ -21,7 +21,7 @@ module.exports = function(app) {
   // Create API group routes
   var apiRoutes = express.Router();
 
-  // Register new users
+  // POST to register new users
   apiRoutes.post('/register', function(req, res) {
     if(!req.body.email || !req.body.password) {
       res.json({ success: false, message: 'Please enter email and password.' });
@@ -72,7 +72,7 @@ module.exports = function(app) {
     });
   });
 
-  // Display list of users
+  // GET list of users
   apiRoutes.get('/users', passport.authenticate('jwt', { session: false }), function(req, res) {
     User.find({}, '-password', function(err, users) {
       if (err)
@@ -82,7 +82,7 @@ module.exports = function(app) {
     })
   });
 
-  // Update user information
+  // UPDATE user information
   apiRoutes.put('/users/:user_id', passport.authenticate('jwt', { session: false }), function(req, res) {
     User.findOne({'_id': req.params.user_id}, function(err, user) {
       if (err)
